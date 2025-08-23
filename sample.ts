@@ -1,5 +1,3 @@
-const queue = () => {};
-
 class Queue {
   private queue: string[];
   constructor(array: string[]) {
@@ -10,7 +8,7 @@ class Queue {
   }
 
   deques() {
-    this.queue.pop();
+    this.queue.shift();
   }
   display() {
     for (const ele of this.queue) {
@@ -19,6 +17,12 @@ class Queue {
   }
 }
 
-const queue1 = new Queue([]);
+const queue1: Queue = new Queue([]);
 queue1.enque("10");
+queue1.enque("20");
+queue1.enque("30");
+queue1.enque("40");
+queue1.enque("50");
+queue1.deques();
+queue1.enque("60");
 queue1.display();

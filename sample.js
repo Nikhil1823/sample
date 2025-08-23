@@ -1,4 +1,3 @@
-var queue = function () { };
 var Queue = /** @class */ (function () {
     function Queue(array) {
         this.queue = array;
@@ -19,4 +18,10 @@ var Queue = /** @class */ (function () {
 }());
 var queue1 = new Queue([]);
 queue1.enque("10");
+queue1.enque("20");
+queue1.enque("30");
+queue1.enque("40");
+queue1.enque("50");
+queue1.deques();
+queue1.enque("60");
 queue1.display();
