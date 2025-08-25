@@ -19,3 +19,10 @@ var Stack = /** @class */ (function () {
     };
     return Stack;
 }());
+var stack1 = new Stack(["apple"]);
+stack1.push("orange");
+stack1.push("pineapple");
+stack1.display();
+stack1.pop();
+stack1.push("almond");
+stack1.display();
