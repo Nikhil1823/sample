@@ -10,4 +10,9 @@ class Stack {
     if (this.stack.length <= 0) return;
     this.stack.pop();
   }
+  display(): void {
+    for (const element of this.stack) {
+      console.log(element);
+    }
+  }
 }
