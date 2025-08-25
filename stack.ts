@@ -1,9 +1,9 @@
 class Stack {
-  private stack: string[] | number[] = [];
-  constructor(data: string[] | number[]) {
+  private stack: string[] = [];
+  constructor(data: string[]) {
     this.stack = data;
   }
-  push(element: string | number) {
+  push(element: string) {
     this.stack.push(element);
   }
   pop() {
@@ -16,3 +16,4 @@ class Stack {
     }
   }
 }
+
