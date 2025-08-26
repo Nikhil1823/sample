@@ -1,7 +1,7 @@
 class CircularQueue {
   private queue;
   private rear = 0;
-  private front;
+  private front = -1;
   private size = 5;
   constructor(array) {
     this.queue = array;
@@ -16,8 +16,8 @@ class CircularQueue {
     this.queue[this.front] = null;
   }
   display() {
-    for (const element of this.queue) {
-      console.log(element);
+    for (let i = this.front; i < this.rear; i++) {
+      console.log(this.queue[i]);
     }
   }
 }
