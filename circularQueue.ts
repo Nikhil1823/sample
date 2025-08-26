@@ -1,58 +1,83 @@
 class CircularQueue {
-  private queue;
-  private rear;
-  private front;
-  private size;
-  private capacity;
-  constructor(capacity) {
+  private queue: (number | null)[];
+  private rear: number;
+  private front: number;
+  private size: number;
+  private capacity: number;
+
+  constructor(capacity: number) {
     this.capacity = capacity;
     this.queue = new Array(capacity).fill(null);
     this.rear = -1;
     this.front = -1;
+    this.size = 0;
   }
 
-  enque(element: number) {
+  enque(element: number): void {
     if (this.isFull()) {
-      console.log("queue overflows");
+      console.log("Queue Overflow");
       return;
     }
+
+    if (this.front === -1) {
+      this.front = 0;
+    }
+
     this.rear = (this.rear + 1) % this.capacity;
     this.queue[this.rear] = element;
     this.size++;
   }
-  deque() {
+
+  deque(): number | null {
     if (this.isEmpty()) {
-      console.log("Queue underflows");
+      console.log("Queue Underflow");
+      return null;
+    }
+
+    const removed = this.queue[this.front];
+    this.queue[this.front] = null;
+
+    if (this.front === this.rear) {
+      this.front = -1;
+      this.rear = -1;
+    } else {
+      this.front = (this.front + 1) % this.capacity;
+    }
+
+    this.size--;
+    return removed;
+  }
+
+  isFull(): boolean {
+    return this.size === this.capacity;
+  }
+
+  isEmpty(): boolean {
+    return this.size === 0;
+  }
+
+  display(): void {
+    if (this.isEmpty()) {
+      console.log("Queue is Empty");
       return;
     }
 
-    this.front = (this.front + 1) % this.capacity;
-    this.queue[this.front] = null;
-    if (this.front == this.rear) {
-      this.front = -1;
-      this.rear = -1;
-      this.size--;
+    let i = this.front;
+    let result = "";
+    while (true) {
+      result += this.queue[i] + " ";
+      if (i === this.rear) break;
+      i = (i + 1) % this.capacity;
     }
-  }
-
-  isFull() {
-    return this.capacity == this.size;
-  }
-  isEmpty() {
-    return this.front == -1;
-  }
-
-  display() {
-    for (let i = this.front; i < this.rear; i++) {
-      if (this.queue[i]) console.log(this.queue[i]);
-    }
+    console.log(result.trim());
   }
 }
 
-const cQue = new CircularQueue([]);
+const cQue = new CircularQueue(5);
 cQue.enque(12);
 cQue.enque(13);
 cQue.enque(14);
 cQue.enque(16);
 cQue.deque();
+cQue.enque(99);
 cQue.display();
