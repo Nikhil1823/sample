@@ -21,3 +21,11 @@ class CircularQueue {
     }
   }
 }
+
+const cQue = new CircularQueue([]);
+cQue.enque(12);
+cQue.enque(13);
+cQue.enque(14);
+cQue.enque(16);
+cQue.deque();
+cQue.display();
