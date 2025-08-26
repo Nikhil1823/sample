@@ -15,4 +15,9 @@ class CircularQueue {
     this.front = (this.front + 1) % this.size;
     this.queue[this.front] = null;
   }
+  display() {
+    for (const element of this.queue) {
+      console.log(element);
+    }
+  }
 }
